@@ -1,0 +1,6 @@
+##### ANSIBLE STATIC SAMPLE INVENTORY FILE
+
+##### Declare all target host
+target01  	ansible_host=34.235.88.235 ansible_password=ansible
+# # target02     	ansible_host=35.175.177.29
+# target03     	ansible_host=18.208.192.181
