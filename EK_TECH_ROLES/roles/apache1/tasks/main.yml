@@ -1,0 +1,19 @@
+---
+- name: Update apt package cache
+  apt:
+    update_cache: yes
+
+- name: Install Apache2 package
+  apt:
+    name: "{{ package }}"
+    state: present
+  notify:
+    - Restart Apache
+
+- name: Change Apache port to 7899
+  lineinfile:
+    path: /etc/apache2/ports.conf
+    regexp: '^Listen '
+    line: 'Listen 7899'
+  notify:
+    - Restart Apache

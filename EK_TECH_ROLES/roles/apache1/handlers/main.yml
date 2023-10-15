@@ -1,0 +1,6 @@
+---
+- name: Restart Apache
+  systemd:
+    name: "{{ package }}"
+    state: restarted
+    enabled: yes
