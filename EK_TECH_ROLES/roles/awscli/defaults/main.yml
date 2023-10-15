@@ -1,0 +1,8 @@
+---
+aws_output: json
+aws_profiles: [] # Format can be a list
+# - name: __PROFILE_NAME__
+#   region: __PROFILE_REGION__
+#   access_key: __PROFILE_ACCESS_KEY__
+#   secret_key: __PROFILE_SECRET_KEY__
+...

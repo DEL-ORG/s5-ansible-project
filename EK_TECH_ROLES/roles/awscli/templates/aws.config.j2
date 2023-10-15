@@ -1,0 +1,11 @@
+# this file is managed by Ansible
+# all changes will be overwritten
+[default]
+region={{ aws_region }}
+output={{ aws_output }}
+{% for profile in aws_profiles %}
+
+[profile {{ profile.name }}]
+region = {{ profile.region }}
+output = json
+{% endfor %}

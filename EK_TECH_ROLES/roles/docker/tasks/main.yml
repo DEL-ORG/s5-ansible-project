@@ -1,0 +1,14 @@
+---
+- import_tasks: add-gpg-keys.yml
+- import_tasks: add-repositories.yml
+
+- name: Install Docker CE
+  package:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+
+- import_tasks: post-install-steps.yml
+  when: docker_ce_exec_post_installation_steps

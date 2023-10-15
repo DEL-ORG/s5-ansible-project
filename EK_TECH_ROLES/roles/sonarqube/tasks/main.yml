@@ -1,0 +1,9 @@
+---
+- name: Copy Docker Compose file to the target
+  copy:
+    src: docker-compose-sonarqube.yml # Specify the path to your Docker Compose file
+    dest: /home/ansible/docker-compose-sonarqube.yml  # Specify the destination path on the target
+  become: yes
+- name: Create Docker Compose services
+  shell: cd /home/ansible/ && docker-compose -f docker-compose-sonarqube.yml  up -d
+  become: yes

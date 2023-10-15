@@ -1,0 +1,7 @@
+---
+- name: Reboot server if required
+  command: shutdown -r now
+  async: 0
+  poll: 0
+  ignore_errors: yes
+  when: reboot_required.stat.exists

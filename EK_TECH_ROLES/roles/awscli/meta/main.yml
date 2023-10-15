@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  role_name: awscli
+  author: DEL
+  description: ansible galaxy role to install awscli
+  company: smartformer UG
+
+  license: MIT
+
+  min_ansible_version: 2.7
+
+  platforms:
+    - name: Ubuntu
+      versions:
+      - xenial
+      - bionic
+
+  galaxy_tags:
+  - awscli
+...

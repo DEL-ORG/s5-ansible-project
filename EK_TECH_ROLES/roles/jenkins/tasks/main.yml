@@ -1,0 +1,12 @@
+---
+# tasks file for jenkins
+- name: Install jenkins 
+  script: jenkins.sh 
+  notify:
+    - Restart Jenkins
+
+- name: Ensure Jenkins service is enabled and started
+  systemd:
+    name: jenkins
+    state: started
+    enabled: yes

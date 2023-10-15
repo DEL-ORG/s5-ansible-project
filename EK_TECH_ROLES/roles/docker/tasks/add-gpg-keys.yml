@@ -1,0 +1,10 @@
+---
+- name: "CentOS/Fedora - Add RPM Signing Key"
+  rpm_key:
+    key: "{{ docker_ce_repository_keyurl }}"
+  when: ansible_os_family == "RedHat"
+
+- name: "Debian/Ubuntu - Add APT Signing Key"
+  apt_key:
+    url: "{{ docker_ce_repository_keyurl }}"
+  when: ansible_os_family == "Debian"

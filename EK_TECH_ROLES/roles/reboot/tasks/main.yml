@@ -1,0 +1,8 @@
+---
+- name: Reboot the machine
+  command: reboot
+  async: 1
+  poll: 0
+  ignore_errors: yes
+  register: reboot_result
+

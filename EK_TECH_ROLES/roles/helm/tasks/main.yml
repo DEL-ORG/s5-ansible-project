@@ -1,0 +1,4 @@
+---
+# tasks file for dkubens
+- name: Install kubens 
+  script: get_helm.sh

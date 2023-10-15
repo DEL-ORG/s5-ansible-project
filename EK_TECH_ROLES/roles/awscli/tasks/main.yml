@@ -1,0 +1,31 @@
+---
+- name: install required packages
+  apt:
+    name: "{{ required_packages }}"
+    state: latest
+    dpkg_options: 'force-confnew,force-confdef'
+    autoclean: yes
+    autoremove: yes
+    update_cache: yes
+    cache_valid_time: 3600
+  vars:
+    required_packages:
+    - python3-pip
+    - jq
+
+- name: install required python packages
+  pip:
+    name: "{{ required_python_packages }}"
+    extra_args: --upgrade
+    executable: pip3
+  vars:
+    required_python_packages:
+    - boto
+    - boto3
+    - botocore
+    - awscli
+
+- name: iterate golang_users
+  include: user.yml
+  when: aws_user is defined
+...

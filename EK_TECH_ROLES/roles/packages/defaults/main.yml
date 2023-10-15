@@ -1,0 +1,25 @@
+---
+packages_to_install:
+  - curl
+  - git
+  - gnupg
+  - jq
+  - openssh-client
+  - python3
+  - nodejs
+  - npm
+  - vim
+  - wget
+  - python3-pip
+  - net-tools
+  - iputils-ping
+  - default-jre
+  - default-jdk
+  - maven
+  - golang-go
+  - unzip
+  - ca-certificates 
+  - openssh-server 
+  - postfix 
+  - tzdata 
+  - perl

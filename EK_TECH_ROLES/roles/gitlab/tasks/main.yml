@@ -1,0 +1,20 @@
+---
+- name: Download GitLab installation script
+  get_url:
+    url: "https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh"
+    dest: "/tmp/script.deb.sh"
+    mode: "0755"
+
+- name: Run GitLab installation script
+  command: "/bin/bash /tmp/script.deb.sh"
+  args:
+    creates: "/etc/apt/sources.list.d/gitlab_gitlab-ce.list"
+
+- name: Install GitLab CE
+  apt:
+    name: gitlab-ce
+    update_cache: yes
+  notify: Reconfigure GitLab
+
+- name: Reconfigure GitLab
+  command: gitlab-ctl reconfigure

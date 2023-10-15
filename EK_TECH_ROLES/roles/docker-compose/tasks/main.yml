@@ -1,0 +1,22 @@
+---
+- name: Download Docker Compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64"
+    dest: "/usr/local/bin/docker-compose"
+    mode: "0755"
+  become: yes
+
+- name: Check if Docker Compose is installed
+  stat:
+    path: "/usr/local/bin/docker-compose"
+  register: compose_installed
+  become: yes
+
+- name: Set a fact indicating whether Docker Compose was installed
+  set_fact:
+    docker_compose_installed: "{{ compose_installed.stat.exists }}"
+  become: yes
+
+- name: Print a message about Docker Compose installation
+  debug:
+    msg: "Docker Compose is {{ 'installed' if docker_compose_installed else 'not installed' }}"

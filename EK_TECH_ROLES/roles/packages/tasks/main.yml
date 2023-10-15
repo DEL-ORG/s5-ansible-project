@@ -1,0 +1,23 @@
+---
+- name: Install required packages
+  become: yes
+  apt:
+    name: "{{ packages_to_install }}"
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Install required packages
+  become: yes
+  yum:
+    name: "{{ packages_to_install }}"
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+# - name: Install aws cli
+#   script: awscli.sh
+
+# - name: Reboot Remote Hosts
+#   become: yes  # This is required for privilege escalation to reboot
+#   reboot:
+#   async: 0
+#   poll: 0

@@ -1,0 +1,18 @@
+---
+# tasks file for dkubens
+- name: Install kubens 
+  shell: |
+         rm -rf /usr/local/bin/kubens /usr/local/bin/kubectx || true
+         git clone https://github.com/ahmetb/kubectx /usr/local/kubectx
+         ln -s /usr/local/kubectx/kubectx /usr/local/bin/kubectx
+         ln -s /usr/local/kubectx/kubens /usr/local/bin/kubens
+  ignore_errors: true
+- name: Install kubectl
+  shell: |
+         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+         sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+         chmod +x kubectl
+         mkdir -p ~/.local/bin
+         mv ./kubectl ~/.local/bin/kubectl
+  ignore_errors: true

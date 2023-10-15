@@ -1,0 +1,12 @@
+---
+- name: "All - Create 'docker' group"
+  group:
+    name: docker
+    state: present
+
+- name: "All - Add user to the 'docker' group"
+  user:
+    name: "{{ item }}"
+    groups: docker
+    append: yes
+  with_items: "{{ docker_ce_users }}"

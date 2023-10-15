@@ -1,0 +1,16 @@
+---
+- name: "CentOS - Add Docker CE Repository"
+  yum_repository:
+    name: "docker-ce-{{ docker_ce_branch }}"
+    baseurl: "{{ docker_ce_repository.redhat }}"
+    description: "Docker CE Repository - {{ docker_ce_branch }}"
+    enabled: yes
+    gpgcheck: yes
+  when: ansible_os_family == "RedHat"
+
+- name: "Debian/Ubuntu - Add Docker CE Repository"
+  apt_repository:
+    repo: "{{ item }}"
+  with_items:
+    - "{{ docker_ce_repository.debian }}"
+  when: ansible_os_family == "Debian"

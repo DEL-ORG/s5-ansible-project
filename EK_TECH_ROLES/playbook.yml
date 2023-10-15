@@ -5,5 +5,18 @@
   become_user: root  
   roles:
     # - users
-    - apache
+    # - apache
+    # - nginx
+      # - patching
+    # - packages
+    # - awscli
+    # - jenkins
+    ## - gitlab
+    # - reboot
+    # - docker
+    #  - docker-compose
+      # - kubens_kubectl
+      # - helm 
+      #  - terraform
+       - sonarqube
   
