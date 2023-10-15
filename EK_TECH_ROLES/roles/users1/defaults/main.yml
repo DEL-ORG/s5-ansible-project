@@ -1,0 +1,47 @@
+
+genericusers_groups:
+  - name: "defunctadmins"
+    gid: 5004           # (Optional)
+    system: no          # (Optional)
+  - name: "dbadmins"
+    gid: 5000           # (Optional)
+    system: no          # (Optional)
+  - name: "mailadmins"
+    gid: 6000
+    system: no
+  - name: "admin"
+    gid: 7000           # (Optional)
+    system: no          # (Optional)
+  - name: "docker"
+    gid: 7014          # (Optional)
+    system: no          # (Optional)
+  - name: "staff"
+    gid: 6001
+    system: no
+  - name: "devops"
+    gid: 6002
+    system: no
+  - name: "dev"
+    gid: 6004
+    system: no
+genericusers_groups_removed:
+  - name: "defunctadmins"
+
+genericusers_users:
+  - name: "eric"
+    groups: ["admin", "staff", "devops", "docker"]
+    ssh_keys:           # Keys to add to authorized_keys
+      - "ssh-dss ......."
+      - "ssh-dss ......."
+    append: "no"        # (Optional) If yes, will only add groups, not set them to just the list in groups.
+    pass: "$6$...."     # (Optional) Set the user's password to this crypted value.
+    comment: "foo acc"  # (Optional)
+    shell: "/bin/bash"  # (Optional) Set the user's shell.
+    home: "/home/baz"   # (Optional) Set the user's home directory.
+    system: no          # (Optional) Make the user a system account or not.
+  - name: "marco"
+    groups: ["admin", "staff", "dev"]
+    ssh_keys: []
+
+genericusers_users_removed:
+  - name: marco

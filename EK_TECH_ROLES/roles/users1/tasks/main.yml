@@ -1,0 +1,61 @@
+# file: generic-users/tasks/main.yml
+
+- name: Make sure all groups are present
+  group:
+    name: "{{ item.name }}"
+    system: "{{ item.system | default(omit) }}"
+    gid: "{{ item.gid | default(omit) }}"
+    state: present
+  with_items: "{{ genericusers_groups }}"
+
+- name: Make sure the users are present
+  user:
+    name: "{{ item.name }}"
+    group: "{{ item.group | default(omit) }}"
+    groups: "{{ item.groups | join(',') if item.groups is defined else omit }}"
+    append: "{{ item.append | default(omit) }}"
+    password: "{{ item.pass | default(omit) }}"
+    comment: "{{ item.comment | default(omit) }}"
+    shell: "{{ item.shell | default(omit) }}"
+    uid: "{{ item.uid | default(omit) }}"
+    home: "{{ item.home | default(omit) }}"
+    system: "{{ item.system | default(omit) }}"
+    state: present
+  # no_log: true
+  with_items: '{{ genericusers_users }}'
+  register: user_created
+
+- name: Force user to change password at first login
+  command: "chage -d 0 {{ item.item.name }}"
+  loop: "{{ user_created.results }}"
+  when:
+    - item.changed
+
+
+    
+- name: Install the ssh keys for the users
+  authorized_key:
+    user: "{{item.0.name}}"
+    key: "{{item.1}}"
+  with_subelements:
+    - "{{ genericusers_users }}"
+    - ssh_keys
+
+- name: Make sure all removed users are not present
+  user:
+    name: "{{item.name}}"
+    state: absent
+    remove: yes
+  with_items: "{{ genericusers_users_removed }}"
+
+- name: Make sure all removed groups are not present
+  group:
+    name: "{{ item.name }}"
+    state: absent
+  with_items: '{{ genericusers_groups_removed }}'
+  ignore_errors: true
+- name: Add users to the docker group
+  user:
+    name: "{{ item.name }}"
+    groups: docker
+  with_items: "{{ genericusers_groups_removed }}"
