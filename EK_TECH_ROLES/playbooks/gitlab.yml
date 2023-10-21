@@ -1,7 +1,13 @@
 ---
-- name: install and configire gitalb
-  hosts: all
+- name: install and configire gitlab
+  hosts: # TBD
   become: yes
   become_user: root  
   roles:
-     - 
+     - users
+     - patching 
+     - packages
+     -  docker
+     - doxker-compose
+     - gitlab
+     - reboot

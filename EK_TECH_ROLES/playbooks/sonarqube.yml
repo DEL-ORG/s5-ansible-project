@@ -1,8 +1,14 @@
 ---
 - name: install and configure Sonarqube
-  hosts: all
+  hosts: # TBD
   become: yes
   become_user: root  
   roles:
-     - 
+     - users
+     - patching 
+     - packages
+     - docker
+     - doxker-compose
+     - sonarqube
+     - reboot
      

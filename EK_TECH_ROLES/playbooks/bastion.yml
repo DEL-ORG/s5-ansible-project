@@ -1,7 +1,14 @@
 ---
 - name: configure bastion servers
-  hosts: all
+  hosts: # TBD
   become: yes
   become_user: root  
   roles:
-     - 
+     - users
+     - patching 
+     - packages
+     - awscli
+     - helm
+     - kubens_kubectl
+     - terraform
+     - reboot
