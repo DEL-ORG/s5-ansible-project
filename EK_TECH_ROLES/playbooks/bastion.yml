@@ -1,7 +1,17 @@
 ---
 - name: configure bastion servers
-  hosts: all
+  hosts: #TBD
   become: yes
   become_user: root  
   roles:
-     - bastion
+     -user
+     -patching
+     -packages
+     -docker
+     -docker-compose
+     -terraform
+     -kubens_kubectl
+     -helm
+     -awscli
+     -bastion
+     -reboot

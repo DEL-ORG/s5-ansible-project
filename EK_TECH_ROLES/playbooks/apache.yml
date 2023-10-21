@@ -1,7 +1,14 @@
 ---
 - name: install apache 
-  hosts: all
+  hosts: #TBD(to be determine)
   become: yes
   become_user: root  
   roles:
-     - apache
+     - user
+     -patching
+     -packages
+     -docker
+     -docker-compose
+     -apache
+     -reboot
+

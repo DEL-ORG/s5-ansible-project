@@ -1,7 +1,13 @@
 ---
 - name: install and configire gitalb
-  hosts: all
+  hosts: #TBD
   become: yes
   become_user: root  
   roles:
-     - gitlab
+     -user
+     -patching
+     -packages
+     -docker
+     -docker-compose
+     -gitlab
+     -reboot

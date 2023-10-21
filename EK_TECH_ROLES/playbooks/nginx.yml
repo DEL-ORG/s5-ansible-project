@@ -1,7 +1,13 @@
 ---
 - name: install and configure nginx
-  hosts: all
+  hosts: #TBD
   become: yes
   become_user: root  
   roles:
-     - nginx
+     -user
+     -patching
+     -packages
+     -docker
+     -docker-compose
+     -nginx
+     -reboot
