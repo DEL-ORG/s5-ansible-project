@@ -4,11 +4,10 @@
   become: yes
   become_user: root  
   roles:
-     -user
-     -patching
-     -packages
-     -docker
-     -docker-compose
-     -sonarqube
-     -jenkins
-     -reboot
+     - users
+     - patching
+     - packages
+     - docker
+     - docker-compose
+     - sonarqube
+     - reboot
