@@ -8,7 +8,7 @@
      - patching 
      - packages
      - docker
-     - doxker-compose
+     - docker-compose
      - sonarqube
      - reboot
      

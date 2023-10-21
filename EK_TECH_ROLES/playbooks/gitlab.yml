@@ -8,6 +8,6 @@
      - patching 
      - packages
      -  docker
-     - doxker-compose
+     - docker-compose
      - gitlab
      - reboot
