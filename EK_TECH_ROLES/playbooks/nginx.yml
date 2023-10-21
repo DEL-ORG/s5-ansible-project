@@ -1,0 +1,7 @@
+---
+- name: install and configure nginx
+  hosts: all
+  become: yes
+  become_user: root  
+  roles:
+     - 

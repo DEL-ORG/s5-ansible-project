@@ -1,0 +1,8 @@
+---
+- name: install and configure Sonarqube
+  hosts: all
+  become: yes
+  become_user: root  
+  roles:
+     - 
+     
