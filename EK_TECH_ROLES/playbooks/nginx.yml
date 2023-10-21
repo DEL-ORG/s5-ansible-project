@@ -1,7 +1,12 @@
 ---
 - name: install and configure nginx
-  hosts: all
+  hosts: TBD
   become: yes
   become_user: root  
   roles:
-     - 
+    - user 
+    - patching 
+    - packages 
+    - docker
+    - nginx 
+    - reboot
