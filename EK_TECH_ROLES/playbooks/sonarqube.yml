@@ -1,8 +1,16 @@
 ---
-- name: install and configure Sonarqube
-  hosts: all
+---
+- name: Install and configure SonarQube
+  hosts: #TBD
   become: yes
   become_user: root  
   roles:
+     - users
+     - docker
+     - docker-compose
      - sonarqube
+     - awscli
+     - patching
+     - packages 
+     - reboot
      
