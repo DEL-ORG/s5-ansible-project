@@ -86,7 +86,13 @@ reboot:
 ```
 terraform:
 
- This role help terraform  in bastion servers
+ This role help to install  terraform  in bastion servers
+```	
+
+```
+Jenkins:
+
+ This role help install and configure Jenkins 
 ```	
 
 			
