@@ -1,7 +1,18 @@
 ---
-- name: install and configure nginx
-  hosts: all
+- name: Install and configure Jenkins
+  hosts: #TBD
   become: yes
   become_user: root  
   roles:
-     - nginx
+     - users
+     - patching 
+     - packages 
+     - docker
+     - docker-compose
+     - terraform
+     - gitlab
+     - sonarqube
+     - kubens_kubectl
+     - awscli
+     - jenkins
+     - reboot

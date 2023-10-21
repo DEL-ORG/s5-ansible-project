@@ -1,10 +1,22 @@
 ---
-- name: configure bastion servers
+- name: Configure bastion servers
   hosts: all
   become: yes
   become_user: root  
   roles:
-    - bastion
+    - users
+    - patching 
+    - packages 
+    - docker
+    - docker-compose
+    - kubens_kubectl
+    - git
+    - terraform
+    - helm 
+    - awscli
+    - reboot
+
+   
   
 
 
