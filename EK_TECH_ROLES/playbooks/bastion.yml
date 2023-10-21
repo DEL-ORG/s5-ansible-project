@@ -1,6 +1,6 @@
 ---
 - name: configure bastion servers
-  hosts: all
+  hosts: # TBD
   become: yes
   become_user: root  
   roles:
@@ -12,4 +12,3 @@
      - kubens_kubectl
      - terraform
      - reboot
-     

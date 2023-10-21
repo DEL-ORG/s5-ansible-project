@@ -1,6 +1,6 @@
 ---
 - name: install and configire gitalb
-  hosts: all
+  hosts: # TBD
   become: yes
   become_user: root  
   roles:
@@ -11,4 +11,3 @@
      - docker-compose
      - gitlab
      - reboot
-     
