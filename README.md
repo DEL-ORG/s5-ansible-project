@@ -6,7 +6,7 @@
 ```
 Apache:
 
- This role help install ans configure apache 
+ This role help install and configure apache 
  ```
 
 ```
